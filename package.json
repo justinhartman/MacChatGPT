@@ -1,0 +1,43 @@
+{
+  "name": "macchatgpt",
+  "productName": "MacChatGPT",
+  "version": "1.0.0",
+  "description": "ChatGPT Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package:all": "npm run package:mac:all; npm run package:win:all; npm run package:linux:all",
+    "package:mac:all": "npm run package:mac:intel; npm run package:mac:silicon",
+    "package:mac:intel": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=dist/build",
+    "package:mac:silicon": "electron-packager . --overwrite --platform=darwin --arch=arm64 --icon=assets/icons/mac/icon.icns --prune=true --out=dist/build",
+    "package:win:all": "npm run package:win:x64; npm run package:win:mas",
+    "package:win:x64": "electron-packager . --overwrite --platform=win32 --arch=x64 --icon=assets/icons/win/icon.ico --prune=true --out=dist/build",
+    "package:win:mas": "electron-packager . --overwrite --platform=mas --arch=x64 --icon=assets/icons/win/icon.ico --prune=true --out=dist/build",
+    "package:linux:all": "npm run package:linux:x64; npm run package:linux:arm; npm run package:linux:arm64",
+    "package:linux:x64": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/512x512.png --prune=true --out=dist/build",
+    "package:linux:arm": "electron-packager . --overwrite --platform=linux --arch=armv7l --icon=assets/icons/png/512x512.png --prune=true --out=dist/build",
+    "package:linux:arm64": "electron-packager . --overwrite --platform=linux --arch=arm64 --icon=assets/icons/png/512x512.png --prune=true --out=dist/build",
+    "installer:mac:intel": "electron-installer-dmg dist/build/MacChatGPT-darwin-x64/MacChatGPT.app MacChatGPT --title='MacChatGPT Installer' --overwrite --icon=assets/icons/mac/icon.icns --out=dist/installers/mac/intel",
+    "installer:mac:silicon": "electron-installer-dmg dist/build/MacChatGPT-darwin-arm64/MacChatGPT.app MacChatGPT --title='MacChatGPT Installer' --overwrite --icon=assets/icons/mac/icon.icns --out=dist/installers/mac/silicon",
+    "installer:mac:all": "npm run installer:mac:intel; npm run installer:mac:silicon",
+    "release:mac": "npm run package:mac:all; npm run installer:mac:all",
+    "lint": "npx eslint -c .eslintrc.js --fix *.js"
+  },
+  "keywords": [
+    "chatgpt",
+    "electron"
+  ],
+  "author": "Justin Hartman <code@justhart.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/parser": "^5.52.0",
+    "electron": "^23.1.0",
+    "electron-installer-dmg": "^4.0.0",
+    "electron-packager": "^17.1.1",
+    "eslint": "^8.34.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1"
+  }
+}
