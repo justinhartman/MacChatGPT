@@ -1,6 +1,7 @@
-# ChatGPT Electron App
+# MacChatGPT Electron App
 
-A simple Electron app for [ChatGPT](https://openai.com/blog/chatgpt/ "ChatGPT").
+A macOS, Windows and Linux desktop application which runs [ChatGPT](https://openai.com/blog/chatgpt/ "ChatGPT") 
+easily and without charge.
 
 ## Credits
 
